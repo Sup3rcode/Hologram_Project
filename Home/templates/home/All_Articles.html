@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="section section-xl bg-gray-lighter novi-bg novi-bg-img">
+    <!-- section wave-->
+
+    <div class="container container-bigger">
+        <div class="row row-ten row-50 row-md-90 justify-content-md-center justify-content-xl-between">
+            <div class="col-md-9 col-lg-6 blog-classic-main text-center">
+                <!-- Post classic-->
+                {% for x in Article %}
+                <article class="post-classic">
+                    <a class="post-classic-media"
+                        href="#">
+                        <img src="{{x.Articles_img.url}}" alt width="870" height="580">
+                    </a>
+                    <div class="post-classic-body">
+                        <p class="post-classic-title">
+                            <a href="#">
+                                {{x.title}}
+                            </a></p>
+                        <ul class="post-classic-meta">
+                            <li>
+                                <span
+                                    class="icon mdi mdi-account novi-icon">
+                                </span>
+                                <span>by<a href="#">{{x.add_by}}</a>
+                                </span>
+                            </li>
+                            <li><span class="icon mdi mdi-calendar-clock novi-icon"></span>
+                                <time >{{x.date}}</time>
+                            </li>
+                          
+                        </ul>
+                        <div class="post-classic-text">
+                            <p>
+                                {{x.summary}}
+                            </p>
+                        </div>
+                        <div class="post-classic-footer"><a
+                                class="button button-sm button-secondary button-nina"
+                                href="{{x.get_absolute_url}}"><span
+                                    style="transition: opacity 0.22s ease 0s, transform 0.22s ease 0s, color 0.22s ease 0s;">C</span><span
+                                    style="transition: opacity 0.22s ease 0.03s, transform 0.22s ease 0.03s, color 0.22s ease 0s;">o</span><span
+                                    style="transition: opacity 0.22s ease 0.06s, transform 0.22s ease 0.06s, color 0.22s ease 0s;">n</span><span
+                                    style="transition: opacity 0.22s ease 0.09s, transform 0.22s ease 0.09s, color 0.22s ease 0s;">t</span><span
+                                    style="transition: opacity 0.22s ease 0.12s, transform 0.22s ease 0.12s, color 0.22s ease 0s;">i</span><span
+                                    style="transition: opacity 0.22s ease 0.15s, transform 0.22s ease 0.15s, color 0.22s ease 0s;">n</span><span
+                                    style="transition: opacity 0.22s ease 0.18s, transform 0.22s ease 0.18s, color 0.22s ease 0s;">u</span><span
+                                    style="transition: opacity 0.22s ease 0.21s, transform 0.22s ease 0.21s, color 0.22s ease 0s;">e</span><span
+                                    style="transition: opacity 0.22s ease 0.24s, transform 0.22s ease 0.24s, color 0.22s ease 0s;"></span><span
+                                    style="transition: opacity 0.22s ease 0.27s, transform 0.22s ease 0.27s, color 0.22s ease 0s;">r</span><span
+                                    style="transition: opacity 0.22s ease 0.3s, transform 0.22s ease 0.3s, color 0.22s ease 0s;">e</span><span
+                                    style="transition: opacity 0.22s ease 0.33s, transform 0.22s ease 0.33s, color 0.22s ease 0s;">a</span><span
+                                    style="transition: opacity 0.22s ease 0.36s, transform 0.22s ease 0.36s, color 0.22s ease 0s;">d</span><span
+                                    style="transition: opacity 0.22s ease 0.39s, transform 0.22s ease 0.39s, color 0.22s ease 0s;">i</span><span
+                                    style="transition: opacity 0.22s ease 0.42s, transform 0.22s ease 0.42s, color 0.22s ease 0s;">n</span><span
+                                    style="transition: opacity 0.22s ease 0.45s, transform 0.22s ease 0.45s, color 0.22s ease 0s;">g</span><span
+                                    class="button-original-content"
+                                    style="transition: background 0.22s ease 0s, color 0.22s ease 0s, transform 0.22s ease 0.48s;">Continue
+                                    reading</span></a>
+                            <div>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                {%endfor%}
+               
+                
+                <ul class="pagination-custom">
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endblock %}

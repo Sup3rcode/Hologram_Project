@@ -1,0 +1,194 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html class="wide wow-animation" lang="en">
+
+<head>
+    <!-- Site Title-->
+    <title>Hologram Technology</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Oswald:200,400%7CLato:300,400,300italic,700%7CMontserrat:900">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
+   
+</head>
+
+<body>
+    <!-- Page preloader-->
+    <div class="page-loader">
+        <div class="page-loader-logo-name">Hologram Technology</div>
+        <div class="preloader-wrapper preloader-big active">
+            <div class="spinner-layer spinner-blue">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+            <div class="spinner-layer spinner-red">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+            <div class="spinner-layer spinner-yellow">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+            <div class="spinner-layer spinner-green">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page-->
+    <div class="page">
+        <header class="section page-header bg-default">
+            <!-- RD Navbar-->
+            <div class="rd-navbar-wrap rd-navbar-default" style="height: 110px;">
+                <nav class="rd-navbar rd-navbar-original rd-navbar-static rd-navbar--is-stuck">
+                    <div class="rd-navbar-inner">
+                        <!-- RD Navbar Panel-->
+                        <div class="rd-navbar-panel">
+                            <!-- RD Navbar Toggle-->
+                            <button class="rd-navbar-toggle toggle-original"
+                                data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
+                            <!-- RD Navbar Brand-->
+                            <div class="rd-navbar-brand">
+                                <!--Brand--><a class="brand-name" href="{% url 'Home:index' %}"><img class="logo-default"
+                                        src="{% static 'assets/images/logo.png' %}" alt="" width="130" height="51"><img
+                                        class="logo-inverse" src="{% static 'assets/images/logo.png' %}" alt=""
+                                        width="130" height="51"></a>
+                            </div>
+                        </div>
+                        <div class="rd-navbar-aside-left">
+                            <div class="rd-navbar-nav-wrap toggle-original-elements">
+                                <ul class="rd-navbar-nav">
+
+
+
+
+
+
+
+                                    <li class="rd-nav-item rd-navbar--has-megamenu"><a class="rd-nav-link"
+                                            href="{% url 'Home:index' %}">Home</a><span></span>
+                                    </li>
+                                    <li class="rd-nav-item rd-navbar--has-megamenu"><a class="rd-nav-link"
+                                            href="#Article">Articles</a><span></span>
+                                    </li>
+                                    <li class="rd-nav-item rd-navbar--has-megamenu"><a class="rd-nav-link"
+                                            href="#video">video </a><span></span>
+                                    </li>
+                                    <li class="rd-nav-item rd-navbar--has-megamenu"><a class="rd-nav-link"
+                                            href="#Gallery">Photo Gallery</a><span></span>
+                                    </li>
+                                    <li class="rd-nav-item rd-navbar--has-megamenu"><a class="rd-nav-link" href="#">How
+                                            to make </a><span></span>
+                                    </li>
+                                    {% if user.is_authenticated %}
+                                    <li class="rd-nav-item active rd-navbar--has-dropdown rd-navbar-submenu"><a class="rd-nav-link" ><i class="mdi mdi-36px mdi-account"></i></a><span class="rd-navbar-submenu-toggle"></span>
+                                        <ul class="rd-menu rd-navbar-dropdown">
+                                          <li class="rd-dropdown-item">
+                                            <form method="post" action="{% url 'users:logout' %}">
+                                                {% csrf_token %}
+                                                <button type="submit" style="color: #ed1c94;" class="rd-dropdown-link" > logout</button>
+                                            </form>
+                                            
+                                          </li>
+                                          <li class="rd-nav-item rd-navbar--has-megamenu"><a class="rd-nav-link"
+                                            href="{%url 'users:password_change'%}">password change</a>
+                                    </li>
+                                          <li class="rd-nav-item rd-navbar--has-megamenu"><a class="rd-nav-link"
+                                            href="{%url 'users:Update_Profile' user.id %}">Update_Profile</a>
+                                    </li>
+                                        </ul>
+                                      </li>
+                                    
+                                {% else %}
+                                <li class="rd-nav-item rd-navbar--has-megamenu" >
+                                    <a class=" button-secondary button-nina"
+                                    href="{%url 'users:login'%}" style="color: aliceblue;">login</a>
+                            </li>
+                            <li class="rd-nav-item rd-navbar--has-megamenu">
+                                <a class=" button-secondary button-nina"
+                                href="{%url 'users:register'%}" style="color: aliceblue;">signup</a>
+                            </li>
+                                {% endif %}
+                                
+                                </ul>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            
+        </header>
+
+        {%block title%}{%endblock title%} 
+        {% block content %}
+
+
+        {% endblock %}
+
+
+        <!-- Page Footer-->
+        <!-- Footer Alternative-->
+        <footer class="section novi-bg novi-bg-img page-footer page-footer-extended text-center text-lg-start bg-gray-darker " >
+
+          
+           
+            <div class="container-wide">
+
+                <div class="divider-xl"></div>
+                <div class="row row-fix align-items-sm-center row-30 text-start">
+                    <div class="col-xl-6 text-xl-start">
+                        <ul class="page-footer-inline-list">
+                            <li><a href="" target="_blank"></a></li>
+                            <li><a href="">About</a></li>
+                            <li> <a href="/admin" target="_blank">admin</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+
+        <!-- Global Mailform Output-->
+        <div class="snackbars" id="form-output-global"></div>
+        <!-- Javascript-->
+        <script src="{% static 'js/core.min2.js' %}"></script>
+        <script src="{% static 'js/script.js' %}"></script>
+
+</body>
+
+</html>

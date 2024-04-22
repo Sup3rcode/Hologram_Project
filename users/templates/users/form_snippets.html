@@ -1,0 +1,14 @@
+
+{% csrf_token %}
+{% for field in form %}
+<div class="form-wrap form-wrap-validation has-error">
+    <input
+        type="{% if field.name == 'password1'%}password{% elif field.name == 'password2'%}password{% elif field.name == 'email' %}email{% else %}text{% endif %}"
+        class="form-input form-control-has-validation"
+        placeholder="Enter {{ field.name }}"
+        name="{{ field.name }}">
+
+    <strong style="color: #d9534f;">{{ field.errors }}</strong>
+</div>
+
+{% endfor %}

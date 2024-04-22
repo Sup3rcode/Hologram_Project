@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+
+<section class="section section-lg bg-default text-start novi-bg novi-bg-img" data-preset="{&quot;title&quot;:&quot;About person&quot;,&quot;category&quot;:&quot;about, forms, counters&quot;,&quot;reload&quot;:true,&quot;id&quot;:&quot;about-person&quot;}">
+    <!-- section wave-->
+    <div class="section-wave">
+      
+    </div>
+    <div class="container container-bigger">
+      <div class="row row-70 row-ten row-fix justify-content-xl-between">
+        <div class="col-xl-3">
+          <div class="row row-70 row-fix align-items-md-center">
+            <div class="col-md-6 col-xl-12"><img src="{{ usr.profile.avatar.url }}" alt="" width="420" height="420">
+            </div>
+            <div class="col-md-6 col-xl-12 text-md-start">
+             
+              {{usr}}
+              <form class="rd-mailform rd-mailform-small"  enctype="multipart/form-data" method="post" action="{% url 'users:Update_Profile3' usr.pk %}">
+                <div class="row row-20 row-fix">
+                    {% csrf_token %}
+                    {% for field in form %}
+                    <div class="form-wrap form-wrap-validation has-error">
+                      {{ field }}
+                      <label class="form-label rd-input-label" for="{{ field.name }}">{{ field.name }}</label>
+                        <strong style="color: #d9534f;">{{ field.errors }}</strong>
+                    </div>
+                    {% endfor %}
+                    
+                    
+                    <div class="col-sm-12">
+
+
+                      <button class="button button-icon-alternate button-icon-right button-xs button-secondary button-ellipse-md ">save<span class="icon mdi mdi-arrow-right"></span></button>
+                      <a></a>
+                    </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-6">
+          <div class="row row-120 row-fix">
+            <div class="col-sm-12">
+              <div class="heading-5"></div>
+              <h3>{{ user.username }} </h3>
+              <h3>{{ user.bio }} </h3>
+              <div class="divider divider-default"></div>
+             
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  {% endblock %}

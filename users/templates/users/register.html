@@ -1,0 +1,93 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html class="wide wow-animation" lang="en">
+
+<head>
+    <!-- Site Title-->
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css"
+        href="//fonts.googleapis.com/css?family=Oswald:200,400%7CLato:300,400,300italic,700%7CMontserrat:900">
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/fonts.css' %}">
+    <style>
+        .bg-image-4 {
+            background-image: url("{% static 'assets/images/bg-03.jpg' %}");
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page">
+        <section class="section">
+            <!-- Page Header-->
+
+            <section class="fullwidth-page bg-image bg-image-4 novi-bg novi-bg-img">
+                <div class="fullwidth-page-inner">
+                    <div class="section-md text-center">
+                        <div class="container">
+                            <h3>signup</h3>
+                            <div class="row justify-content-sm-center">
+                                <div class="col-md-8 col-lg-6 col-xl-4">
+                                    <!-- RD Mailform-->
+                                    <form class="rd-mailform rd-mailform-small" method="post" action="{% url 'users:register' %}">
+                                        {% csrf_token %}
+                                        {% for field in form %}
+                                        <div class="form-wrap form-wrap-validation has-error">
+                                            <input
+                                                type="{% if field.name == 'password1'%}password{% elif field.name == 'password2'%}password{% elif field.name == 'email' %}email{% else %}text{% endif %}"
+                                                class="form-input form-control-has-validation" placeholder="Enter {{ field.name }}"
+                                                name="{{ field.name }}">
+
+                                            <strong style="color: #d9534f;">{{ field.errors }}</strong>
+                                        </div>
+                                      
+                                        {% endfor %}
+                                        
+                                        <div class="form-button">
+                                            <button class="button button-block button-secondary button-nina" type="submit">Signup</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <!-- Page Footer-->
+                    <div class="section-xs page-footer text-center">
+                        <div class="container">
+                            <p class="rights"><span>&copy;&nbsp;</span><span
+                                    class="copyright-year"></span><span>&nbsp;</span><span>Hologram
+                                    Technology</span><span>.&nbsp;</span><a href="privacy-policy.html">Privacy
+                                    Policy</a></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </div>
+    <!-- PANEL-->
+
+    <!-- Global Mailform Output-->
+    <div class="snackbars" id="form-output-global"></div>
+    <!-- Javascript-->
+    <!-- Global Mailform Output-->
+    <div class="snackbars" id="form-output-global"></div>
+    <!-- Javascript-->
+    <script src="{% static 'assets/js/core.min.js' %}"></script>
+    <script src="{% static 'assets/js/script.js' %}"></script>
+    <!-- Google Tag Manager --><noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-P9FT69" height="0"
+            width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <!-- End Google Tag Manager -->
+</body>
+
+
+</html>

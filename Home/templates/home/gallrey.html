@@ -1,0 +1,20 @@
+
+
+<div class="col-md-12 col-xl-6">
+    <h6>Gallery</h6>
+    <div class="instafeed" data-lightgallery="group">
+      <div class="row row-10 row-narrow">
+        {% for x in gallery %}
+        <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+          <div class="thumbnail-instafeed thumbnail-instafeed-minimal"><a class="instagram-link" data-lightgallery="item" href="{{x.image.url}}"><img class="instagram-image" src="{{x.image.url}}" alt="" width="115" height="115"></a>
+            <div class="caption">
+              <ul class="list-inline">
+                <li><span class="icon novi-icon mdi mdi-plus"></span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        {%endfor%}
+      </div>
+    </div>
+  </div>
