@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Home',
     'users',
+    'django_extensions',
+   
     
 ]
 MIDDLEWARE = [
@@ -52,7 +54,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+GRAPH_MODELS = {
+  'all_applications': True,
+  'group_models': True,
+}
 ROOT_URLCONF = 'Hologram_Technology.urls'
 
 TEMPLATES = [
