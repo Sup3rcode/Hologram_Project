@@ -5,8 +5,24 @@ from django.views import generic
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.core.cache import cache
+from datetime import timedelta, date
+
+def daterange(date1, date2):
+    for n in range(int ((date2 - date1).days)+1):
+        yield date1 + timedelta(n)
+
+
+
+
+
 # Create your views here.
 def index(request):
+    start_dt = date(2024,4,20)
+    end_dt = date(2024,4,30)
+    weekdays = [5,6]
+    for dt in daterange(start_dt, end_dt):
+        if dt.weekday() not in weekdays:                    # to print only the weekdates
+            print(dt.strftime("%Y-%m-%d-%A"))
     cache.clear()
     if request.user.is_authenticated:
         pr = User.objects.get(id=request.user.id)
